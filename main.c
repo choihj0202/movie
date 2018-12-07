@@ -14,6 +14,10 @@ int main(int argc, char *argv[]) {
 	int runTime; //movie runtime
 	float score; //movie score
 	
+	char ROW[200];
+	char c;
+	int i;
+	int cnt = 0;
 	int exit_flag = 0; //flag variable for while loop
 	int option; //user input option
 	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
@@ -22,6 +26,25 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
+	printf("Reading the data files...\n");
+	
+	fp = fopen("movie.dat", "r");
+	
+	if (fp == NULL)
+		printf("[ERROR] cannot open!\n");
+	else	
+	{
+		while (1)
+		{
+			fgets(ROW, 200, fp);
+			cnt++;
+			
+			if ((c=fgetc(fp)) == EOF)
+				break;
+		}
+	}
+	
+	printf("Read done! %d items are read\n\n\n\n", cnt);
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
@@ -34,6 +57,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	//1.4 FILE close
+	fclose(fp);
 	
 	//2. program start
 	while(exit_flag == 0) 

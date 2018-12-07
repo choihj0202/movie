@@ -56,19 +56,36 @@ float mv_getScore(void* obj)
 //return the runtime value from the input instance of movInfo_t structure
 int mv_getRunTime(void* obj)
 {
-	fgets
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	
+	return mvPtr->runTime
 }
 
 //return the name string pointer from the input instance of movInfo_t structure
 char* mv_getName(void* obj)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	char *name[200];
+	int cnt = 0;
+	int i;
+	
+	while ((name[cnt]=fgetc(fp)) != ' ')
+	{
+		cnt++;
+	}
+	
+	return mvPtr->name;
 }
 
 //return the country string pointer from the input instance of movInfo_t structure
 char* mv_getCountry(void* obj)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	char *country[10];
+	
+	return mvPtr->madeIn;
 }
 
 

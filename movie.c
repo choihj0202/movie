@@ -46,13 +46,17 @@ void mv_print(void* obj)
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	fgets()
+	mvPtr->score = fget
+	return mvPtr->score;
 }
 
 //return the runtime value from the input instance of movInfo_t structure
 int mv_getRunTime(void* obj)
 {
-	
+	fgets
 }
 
 //return the name string pointer from the input instance of movInfo_t structure

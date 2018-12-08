@@ -48,8 +48,7 @@ float mv_getScore(void* obj)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	fgets()
-	mvPtr->score = fget
+//	mvPtr->score = fget
 	return mvPtr->score;
 }
 
@@ -58,7 +57,7 @@ int mv_getRunTime(void* obj)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	return mvPtr->runTime
+	return mvPtr->runTime;
 }
 
 //return the name string pointer from the input instance of movInfo_t structure
@@ -70,10 +69,10 @@ char* mv_getName(void* obj)
 	int cnt = 0;
 	int i;
 	
-	while ((name[cnt]=fgetc(fp)) != ' ')
-	{
-		cnt++;
-	}
+//	while ((name[cnt]=fgetc(fp)) != ' ')
+//	{
+//		cnt++;
+//	}
 	
 	return mvPtr->name;
 }

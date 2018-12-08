@@ -118,9 +118,9 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					
 					//if the input country matches to the country of the movie,
-					if ( strnmp(country, mvInfo->(void*)country, strlen(country)) == 0 ) 
+//					if ( strnmp(country, mvInfo->(void*)country, strlen(country)) == 0 ) 
 					//then print the contents of the mvInfo
-					mv_print(mvInfo);
+//					mv_print(mvInfo);
 					
 				}
 				
@@ -164,9 +164,9 @@ int main(int argc, char *argv[]) {
 					
 					//get object of ndPtr to mvInfo void pointer
 					//if the input score is lower than the score of the movie,
-					if (score < mvInfo->(void*)score )
+//					if (score < mvInfo->(void*)score )
 					//then print the contents of the mvInfo
-					mv_print(mvInfo);
+//					mv_print(mvInfo);
 				}
 				break;
 				

@@ -114,7 +114,7 @@ int main(int argc, char *argv[]) {
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
 		if (option == 1 || option == 2 || option == 3 || option == 4)
 		{
-			list_repeatFunc(repFunc, arg, list);
+			cnt = list_repeatFunc(repFunc, arg, list);
 			
 			//2.3 print number of movies
 			printf("\n    - totally %d movies are listed!\n\n\n\n", cnt);

@@ -24,6 +24,11 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 		return NULL;
 	}
 	
+	strcpy(mvPtr->name, name);
+	strcpy(mvPtr->madeIn, country);
+	mvPtr->runTime = runTime;
+	mvPtr->score = score;
+	
 	return (void*)mvPtr;
 }
 
@@ -37,6 +42,7 @@ void printMv(void* obj)
 	
 	printf("Name : %s (%s)\n", mvPtr->name, mvPtr->madeIn);
 	printf("running time : %i, score : %f\n", mvPtr->runTime, mvPtr->score);
+	printf("----------------------------------------\n");
 	
 	return;
 }
@@ -45,14 +51,7 @@ int mv_printAll(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	arg = mvPtr;
-	
-	mvPtr->name;
-	mvPtr->madeIn;
-	mvPtr->runTime;
-	mvPtr->score;
-	
-	printMv(arg);
+	printMv(mvPtr);
 	
 	return 0;
 }
@@ -61,15 +60,11 @@ int mv_printScore(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	arg = mvPtr;
-	
-	mvPtr->name;
-	mvPtr->madeIn;
-	mvPtr->runTime;
-	mvPtr->score;
-	
-	printMv(arg);
-	
+	printf("1");
+	if ((mvPtr->score) >= *(float*)arg)
+		printMv(mvPtr);
+		
+
 	return 0;
 }
 
@@ -77,14 +72,8 @@ int mv_printRunTime(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	arg = mvPtr;
-	
-	mvPtr->name;
-	mvPtr->madeIn;
-	mvPtr->runTime;
-	mvPtr->score;
-	
-	printMv(arg);
+	if ((mvPtr->runTime) >= *(int*)arg)
+		printMv(mvPtr);
 	
 	return 0;
 }
@@ -93,14 +82,8 @@ int mv_printCountry(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	arg = mvPtr;
-	
-	mvPtr->name;
-	mvPtr->madeIn;
-	mvPtr->runTime;
-	mvPtr->score;
-	
-	printMv(arg);
+	if (strcmp(mvPtr->madeIn, (char*) arg) == 0)
+		printMv(mvPtr);
 	
 	return 0;
 }

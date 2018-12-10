@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 		printf("3. search for specific runtime movies\n");
 		printf("4. search for specific score movies\n");
 		printf("5. exit\n");
-		printf("-------------------- Menu --------------------\n");
+		printf("-------------------- Menu --------------------\n\n");
 		
 		printf("-- select an option : ");
 		scanf("%d", &option);
@@ -69,7 +69,6 @@ int main(int argc, char *argv[]) {
 				repFunc = mv_printAll;
 				arg = NULL;
 				
-				
 				break;
 				
 			case 2: //print movies of specific country
@@ -77,16 +76,27 @@ int main(int argc, char *argv[]) {
 				scanf("%s", country);
 				printf("----------------------------------------\n");
 				
+				repFunc = mv_printCountry;
+				arg = NULL;
+				
 				break;
 				
 			case 3: //print movies with long runtime
 				printf("select a minimal runtime : ");
 				scanf("%d", &runTime);
+				
+				repFunc = mv_printRunTime;
+				arg = NULL;
+				
 				break;
 				
 			case 4: //print movies with high score
 				printf("select a minimal score : ");
 				scanf("%f", &score);
+				
+				repFunc = mv_printScore;
+				arg = NULL;
+				
 				break;
 				
 			case 5:
@@ -96,15 +106,20 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			default:
-				printf("wrong command! input again\n");
+				printf("wrong command! input again\n\n");
 				break;
 		}
 		
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		list_repeatFunc(repFunc, arg, list);
+		if (option == 1 || option == 2 || option == 3 || option == 4 || option == 5)
+		{
+			list_repeatFunc(repFunc, arg, list);
+			
+			//2.3 print number of movies
+			printf("\n    - totally %d movies are listed!\n\n\n\n", cnt);
+		}
+			
 		
-		//2.3 print number of movies
-//		printf("	- totally %d movies are listed!\n\n\n\n", );
 	}
 	
 	return 0;

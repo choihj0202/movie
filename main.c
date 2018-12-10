@@ -29,31 +29,19 @@ int main(int argc, char *argv[]) {
 	
 	if (fp == NULL)
 		printf("[ERROR] cannot open!\n");
-	else
-	{
-		while (1)
-		{
-			fgets(ROW, 200, fp);
-			cnt++;
-			
-			if ((c=fgetc(fp)) == EOF)
-				break;
-		}
-	}
-	
-	printf("Read done! %d items are read\n\n\n\n", cnt);
-	
+
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( /* read name, country, runtime and score*/ )
+	while (fscanf(fp, "%s %s %d %f", name, country, &runTime, &score) != EOF) /* read name, country, runtime and score*/
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		mvInfo = mv_genMvInfo(name, score, runTime, country);
 		list_addTail(mvInfo, list);
 	}
-
+	printf("Read done! %d items are read\n\n\n\n", list_len(list));
+	
 	//1.4 FILE close
 	fclose(fp);
 	
@@ -68,6 +56,7 @@ int main(int argc, char *argv[]) {
 		printf("4. search for specific score movies\n");
 		printf("5. exit\n");
 		printf("-------------------- Menu --------------------\n");
+		
 		printf("-- select an option : ");
 		scanf("%d", &option);
 		
@@ -79,18 +68,25 @@ int main(int argc, char *argv[]) {
 				
 				repFunc = mv_printAll;
 				arg = NULL;
+				
+				
 				break;
 				
 			case 2: //print movies of specific country
-
+				printf("select a country : ");
+				scanf("%s", country);
+				printf("----------------------------------------\n");
+				
 				break;
 				
 			case 3: //print movies with long runtime
-
+				printf("select a minimal runtime : ");
+				scanf("%d", &runTime);
 				break;
 				
 			case 4: //print movies with high score
-				
+				printf("select a minimal score : ");
+				scanf("%f", &score);
 				break;
 				
 			case 5:
@@ -105,7 +101,10 @@ int main(int argc, char *argv[]) {
 		}
 		
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
+		list_repeatFunc(repFunc, arg, list);
+		
 		//2.3 print number of movies
+//		printf("	- totally %d movies are listed!\n\n\n\n", );
 	}
 	
 	return 0;

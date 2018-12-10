@@ -43,24 +43,65 @@ void printMv(void* obj)
 
 int mv_printAll(void* obj, void* arg)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	arg = mvPtr;
+	
+	mvPtr->name;
+	mvPtr->madeIn;
+	mvPtr->runTime;
+	mvPtr->score;
+	
+	printMv(arg);
+	
+	return 0;
 }
 
 int mv_printScore(void* obj, void* arg)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	arg = mvPtr;
+	
+	mvPtr->name;
+	mvPtr->madeIn;
+	mvPtr->runTime;
+	mvPtr->score;
+	
+	printMv(arg);
+	
+	return 0;
 }
 
 int mv_printRunTime(void* obj, void* arg)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	arg = mvPtr;
+	
+	mvPtr->name;
+	mvPtr->madeIn;
+	mvPtr->runTime;
+	mvPtr->score;
+	
+	printMv(arg);
+	
+	return 0;
 }
 
 int mv_printCountry(void* obj, void* arg)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	arg = mvPtr;
+	
+	mvPtr->name;
+	mvPtr->madeIn;
+	mvPtr->runTime;
+	mvPtr->score;
+	
+	printMv(arg);
+	
+	return 0;
 }
-
-
-
 

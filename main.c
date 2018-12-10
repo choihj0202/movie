@@ -19,10 +19,29 @@ int main(int argc, char *argv[]) {
 	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
 	int (*repFunc)(void* obj, void* arg); //function pointer for using list_repeatFunc() function
 	void *arg; //a void pointer for passing argument to repFunc
-	int cnt; //integer variable
+	int cnt = 0; //integer variable
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
+	printf("Reading the data files...\n");
+	
+	fp = fopen("movie.dat", "r");
+	
+	if (fp == NULL)
+		printf("[ERROR] cannot open!\n");
+	else
+	{
+		while (1)
+		{
+			fgets(ROW, 200, fp);
+			cnt++;
+			
+			if ((c=fgetc(fp)) == EOF)
+				break;
+		}
+	}
+	
+	printf("Read done! %d items are read\n\n\n\n", cnt);
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
@@ -31,15 +50,26 @@ int main(int argc, char *argv[]) {
 	while ( /* read name, country, runtime and score*/ )
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
+		mvInfo = mv_genMvInfo(name, score, runTime, country);
 		list_addTail(mvInfo, list);
 	}
 
 	//1.4 FILE close
+	fclose(fp);
 	
 	//2. program start
 	while(exit_flag == 0)
 	{
 		//2.1 print menu message and get input option
+		printf("-------------------- Menu --------------------\n");
+		printf("1. print all the movies\n");
+		printf("2. search for specific country movies\n");
+		printf("3. search for specific runtime movies\n");
+		printf("4. search for specific score movies\n");
+		printf("5. exit\n");
+		printf("-------------------- Menu --------------------\n");
+		printf("-- select an option : ");
+		scanf("%d", &option);
 		
 		switch(option)
 		{

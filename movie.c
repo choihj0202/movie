@@ -60,10 +60,8 @@ int mv_printScore(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	printf("1");
 	if ((mvPtr->score) >= *(float*)arg)
 		printMv(mvPtr);
-		
 
 	return 0;
 }
@@ -82,7 +80,7 @@ int mv_printCountry(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	if (strcmp(mvPtr->madeIn, (char*) arg) == 0)
+	if (strcmp(mvPtr->madeIn, (char*)arg) == 0)
 		printMv(mvPtr);
 	
 	return 0;
